@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo简明教程（一） | 一个家伙写字的地方</title>
+  <meta name="author" content="FengRuibo">
+  
+  <meta name="description" content="安装Hexo这是关于hexo的一个极简教程，梳理自己在安装hexo的主要经过，记录遇到的主要问题，一方面算是自己给自己的一份总结，另一方面也期待对他人能够有所帮助。
+一、Hexo是什么Hexo是一个用于搭建blog的简洁高效的框架，支持markdown格式，可以使用一些主题生成漂亮的静态网页。这方面的框架其实有不少，比如Jekyll，不过没使用过，这里就不细说了。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Hexo简明教程（一）"/>
+  <meta property="og:site_name" content="一个家伙写字的地方"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="一个家伙写字的地方" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">一个家伙写字的地方</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-02-27T09:16:13.000Z"><a href="/2017/02/27/2017-02-27-Simple-Hexo-Tutorial/">2017-02-27</a></time>
+      
+      
+  
+    <h1 class="title">Hexo简明教程（一）</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>这是关于hexo的一个极简教程，梳理自己在安装hexo的主要经过，记录遇到的主要问题，一方面算是自己给自己的一份总结，另一方面也期待对他人能够有所帮助。</p>
+<h3 id="一、Hexo是什么"><a href="#一、Hexo是什么" class="headerlink" title="一、Hexo是什么"></a>一、Hexo是什么</h3><p>Hexo是一个用于搭建blog的简洁高效的框架，支持markdown格式，可以使用一些主题生成漂亮的静态网页。这方面的框架其实有不少，比如Jekyll，不过没使用过，这里就不细说了。</p>
+<a id="more"></a>
+<h3 id="二、安装Hexo"><a href="#二、安装Hexo" class="headerlink" title="二、安装Hexo"></a>二、安装Hexo</h3><p>安装Hexo的最好教程是<a href="https://hexo.io/docs/index.html" target="_blank" rel="external">官方文档</a>, 一定要仔细看，基本上常见问题都能够解决。</p>
+<p>在安装Hexo之前需要先行安装Node.js和Git，关于这两者的安装方法，在hexo的官方文档有说明，照着做就是了。不过，这里面坑不少，这里重点说说自己遇到的问题。</p>
+<p>自己用的MPB15，系统是macOS Sierra，其中Git是自带的，重点就是安装Node.js了。刚开始采用官方提供的安装包直接安装，不过安装好以后没法进一步安装Hexo，折腾好久没解决，于是放弃了这种方法，回头查看文档发现，安装Node.js的最好方法就是用nvm，后来也确实这样安装成功了，看来还是不能自作主张图省事。</p>
+<p>安装nvm本来使用hexo官方文档中提供的两个方法（curl命令或wget命令）就可以，不过自己电脑上设置有问题，必须使用SSH协议，所以两种方法都不能用，于是就退回到最原始的方法，采用源码安装，具体方法可参照nvm的<a href="https://github.com/creationix/nvm" target="_blank" rel="external">文档说明</a>，其中有个小节提供了手动安装（Manual install）的方法，直接安装里面的说明，复制其安装代码就可以搞定了，不过自己的电脑中需要把其中的git clone命令后的地址改成git协议的，否则clone不成功。这里需要提醒的是，一定要完全安装官方文档去做，自己当时就忽视了一个操作，即忘记把以下代码添加到<code>~/.bashrc</code>, <code>~/.profile</code>, 或 <code>~/.zshrc</code>文件中去，其实自己电脑中这几个文件都没有，后来是添加到<code>~/.bash\_profile</code>文件中去了，不同版本的系统终端的配置文档不同，这里就需要自己去搞定了。</p>
+<pre><code>export NVM\_DIR=&quot;$HOME/.nvm&quot;
+[ -s &quot;$NVM\_DIR/nvm.sh&quot; ] &amp;&amp; . &quot;$NVM\_DIR/nvm.sh&quot; # This loads nvm
+</code></pre><p>安装完nvm之后，使用<code>nvm install stable</code>就可以来安装Node.js了，还是那句话，一定要认真读官方文档，千万不要自作聪明，更不要偷懒。</p>
+<p>最后就是安装Hexo了，只要执行<code>npm install -g hexo-cli</code>即可。</p>
+<p>这样看来其实安装hexo并不难，可是一旦运气不好，你一定会遇到各种各样稀奇古怪的问题，一般情况下，在官方文档中就能找到答案，实在不行，直接google吧。</p>
+<p>此外，虽然自己hexo配置基本成功了，但还是有个问题死活不能解决就是在执行hexo的时候总是跳出下面这个错误信息：</p>
+<pre><code>&quot;Error: Cannot find module &apos;./build/Release/DTraceProviderBindings&apos;&quot;
+</code></pre><p>虽然这并不影响使用，但看着总是不太舒服。查看nvm在github仓库中的issue，里面提供了几个解决方法，综合看来如下：</p>
+<p>先使用<code>npm uninstall hexo</code>卸载hexo，随后使用<code>npm install hexo —no-optional —save</code>重新安装，好多人说这样就解决问题了，可是在自己的电脑上并不管用，暂时没有更好的解决方案，只好先这样吧。</p>
+<h3 id="三、安装好Hexo后干啥"><a href="#三、安装好Hexo后干啥" class="headerlink" title="三、安装好Hexo后干啥"></a>三、安装好Hexo后干啥</h3><p>很简单，可以开始创建自己的博客了，虽然只能在本地运行，但总算可以迈出第一步了。</p>
+<p>在Hexo中创建博客很简单，重点参照<a href="https://hexo.io/docs/setup.html" target="_blank" rel="external">官方文档_Setup</a>和<a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">官方文档_Writing</a>，大致就是下面这几步：</p>
+<ol>
+<li><p>进入到你想放置本地博客文件的目录中，随后运行下面几个命令：</p>
+<pre><code>hexo init &lt;folder&gt; #&lt;folder&gt;可以任意命名，用于存放本地博客文件
+cd &lt;folder&gt;
+npm install
+</code></pre></li>
+<li><p>完成上面几行命令之后，就完成了本地博客的初始化工作，接下来可以进入<code>&lt;folder&gt;\_config.yml</code>中进行一些基本配置，如果不配置也行，后面随时都可以根据自己的需要来进行相关配置。这里暂时采用默认配置。</p>
+</li>
+<li><p>运行<code>hexo new &lt;title&gt;</code>，这个命令的作用是在本地新建一篇文章，随后进入<code>&lt;folder&gt;/source/\_posts</code>就可以找到刚刚创建的博客文件，使用你自己喜欢的文本编辑器打开这个文件，就可以在里面写你的博客了。当然，你需要学习一下markdown语法，并且使用markdown语法来写自己的博客。</p>
+</li>
+<li><p>完成自己的文章之后，保存并关闭，随后运行下面几行命令，然后根据命令行的提示打开相应网页就可以看看自己的成果了。</p>
+<pre><code>hexo g
+hexo s
+</code></pre></li>
+</ol>
+<p>通过上面几个简单的步骤，我们就完成了博客的创建及生成，并且可以在本地查看基本效果，当然，默认的配置可能不能满足你的需求，那么就需要进一步的设置，这些会在后续的文章中不断涉及，当然，你自己也可以把hexo的官方文档浏览一遍，再次友情提示：<strong>你的大部分疑问都可以在那里得到解答</strong>。</p>
+<p>（未完待续）</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/计算机/">计算机</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Hexo/">Hexo</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+  <!-- 多说评论框 start -->
+  	<div class="ds-thread"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"fengruibo"};
+		(function() {
+				var ds = document.createElement('script');
+				ds.type = 'text/javascript';ds.async = true;
+				ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+				ds.charset = 'UTF-8';
+				(document.getElementsByTagName('head')[0] 
+				 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+  <!-- 多说公共JS代码 end -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:fengruibo.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/计算机/">计算机</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class='widget tag">
+	<h3 class="title">友情链接</h3>
+	<ul class="entry">
+		<li><a href="http://leiyunhe.com/" title="Crane Space^2">leiyunhe</a></li>
+	</ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2017 FengRuibo
+  
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<span id="busuanzi_container_site_uv">
+	本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+</script>
+</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

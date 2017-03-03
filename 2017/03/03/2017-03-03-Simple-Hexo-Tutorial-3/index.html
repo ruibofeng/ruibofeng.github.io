@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo简明教程（三） | 一个家伙写字的地方</title>
+  <meta name="author" content="FengRuibo">
+  
+  <meta name="description" content="在Hexo中添加评论功能这里以目前比较流行的“多说”为例，尝试为hexo添加评论功能，过程本身并不复杂，但是做的过程中遇到了一些小问题，记录如下，供参考。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Hexo简明教程（三）"/>
+  <meta property="og:site_name" content="一个家伙写字的地方"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="一个家伙写字的地方" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">一个家伙写字的地方</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-03-03T02:07:36.000Z"><a href="/2017/03/03/2017-03-03-Simple-Hexo-Tutorial-3/">2017-03-03</a></time>
+      
+      
+  
+    <h1 class="title">Hexo简明教程（三）</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="在Hexo中添加评论功能"><a href="#在Hexo中添加评论功能" class="headerlink" title="在Hexo中添加评论功能"></a>在Hexo中添加评论功能</h2><p>这里以目前比较流行的“多说”为例，尝试为hexo添加评论功能，过程本身并不复杂，但是做的过程中遇到了一些小问题，记录如下，供参考。</p>
+<a id="more"></a>
+<p>主要步骤如下：</p>
+<ol>
+<li>注册”多说”<br> 在<a href="http://duoshuo.com/" target="_blank" rel="external">多说官网</a>首页点击“登陆”菜单，你会发现多说目前不必注册，采用流行的社交账号登陆即可。</li>
+<li><p>复制通用代码<br> 登陆之后，进入后台管理界面，选择“工具”菜单，复制“通用代码”，如下图所示。</p>
+ <img src="/2017/03/03/2017-03-03-Simple-Hexo-Tutorial-3/duoshuo1.png" alt="复制通用代码" title="复制通用代码">
+<p> 上图中红线部分建议删除。</p>
+</li>
+<li><p>修改主题文件<br> 以个人使用的主题light为例，在blog目录中打开相应主题下的有关文件，在我使用的主题中，这个文件位于下面这个路径：</p>
+<p> <code>themes\light\layout\_partial\comment.ejs</code></p>
+<p> 将上一步复制的通用代码粘贴到相应的位置，请参照下面所示代码：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;% if (page.comments)&#123; %&gt;</div><div class="line">&lt;section id=&quot;comment&quot;&gt;</div><div class="line">通用代码</div><div class="line">&lt;/section&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>按照以上步骤，基本可以顺利完成评论功能的添加，如果不能正常运行，可参照<a href="http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9" target="_blank" rel="external">多说帮助文档</a>。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/计算机/">计算机</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Hexo/">Hexo</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+  <!-- 多说评论框 start -->
+  	<div class="ds-thread"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"fengruibo"};
+		(function() {
+				var ds = document.createElement('script');
+				ds.type = 'text/javascript';ds.async = true;
+				ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+				ds.charset = 'UTF-8';
+				(document.getElementsByTagName('head')[0] 
+				 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+  <!-- 多说公共JS代码 end -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:fengruibo.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/计算机/">计算机</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class='widget tag">
+	<h3 class="title">友情链接</h3>
+	<ul class="entry">
+		<li><a href="http://leiyunhe.com/" title="Crane Space^2">leiyunhe</a></li>
+	</ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2017 FengRuibo
+  
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<span id="busuanzi_container_site_uv">
+	本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+</script>
+</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

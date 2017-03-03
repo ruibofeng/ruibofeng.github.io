@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo简明教程（二） | 一个家伙写字的地方</title>
+  <meta name="author" content="FengRuibo">
+  
+  <meta name="description" content="将博客托管到Github托管博客到Github是利用Github提供的GithubPages功能，具体步骤可参考前面提到的网页，现简述如下：">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Hexo简明教程（二）"/>
+  <meta property="og:site_name" content="一个家伙写字的地方"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="一个家伙写字的地方" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">一个家伙写字的地方</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-02-27T11:35:18.000Z"><a href="/2017/02/27/2017-02-27-Simple-Hexo-Tutorial-2/">2017-02-27</a></time>
+      
+      
+  
+    <h1 class="title">Hexo简明教程（二）</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="将博客托管到Github"><a href="#将博客托管到Github" class="headerlink" title="将博客托管到Github"></a>将博客托管到Github</h2><p>托管博客到Github是利用Github提供的<a href="https://pages.github.com/" target="_blank" rel="external">GithubPages</a>功能，具体步骤可参考前面提到的网页，现简述如下：</p>
+<a id="more"></a>
+<ol>
+<li><p>在<a href="https://github.com/" target="_blank" rel="external">Github</a>中注册一个账号。</p>
+</li>
+<li><p>在Github上创建一个仓库，将其命名为<strong>username.github.io</strong>，这里的username指的是你在github上的用户名，这里千万不要改为其它名字。</p>
+</li>
+<li><p>修改hexo本地配置文件（根目录下的_config.yml，而非themes目录下的_config.yml），具体内容如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">	type: git</div><div class="line">	repo: git@github.com:ruibofeng/ruibofeng.github.io.git</div><div class="line">	branch: master</div><div class="line">	message:</div><div class="line">	name: </div><div class="line">	email: </div></pre></td></tr></table></figure>
+<p> 需要注意的是，上面的仓库地址需要根据个人情况设置，这里采用的是git协议，采用https协议也可以，具体操作时选取任意一个能够使用的即可。</p>
+</li>
+<li><p>部署本地博客到GitHub：</p>
+<p> 部署之前，需要安装一个插件，执行以下命令完成安装：</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre><p> 插件完成之后，执行以下命令即可完成部署：</p>
+<pre><code>hexo new article_title #新建一篇文章
+hexo generate #生成静态网页
+hexo deploy #部署到Github
+</code></pre></li>
+</ol>
+<p>进行完上面的设置之后，在浏览器访问username.github.io（需将username替换成你自己在github的用户名）就可以打开托管在Github上的博客了。</p>
+<h2 id="绑定独立域名"><a href="#绑定独立域名" class="headerlink" title="绑定独立域名"></a>绑定独立域名</h2><p>将博客托管在Github上之后，我们必须使用username.github.io来访问，如果能够使用自己的独立域名去访问，那就酷多了，我们一起来看看如何实现。</p>
+<ol>
+<li><p>注册个人独立域名</p>
+<p> 域名服务商很多，这里推荐使用<a href="https://www.godaddy.com/" target="_blank" rel="external">godaddy</a>，具体流程在官网上很容易实现，网上各种教程也不少，这里不再赘述。</p>
+</li>
+<li><p>配置DNS</p>
+<p> 在Godday完成注册之后，登陆Godday，进入域名设置界面，参见下图：</p>
+ <img src="/2017/02/27/2017-02-27-Simple-Hexo-Tutorial-2/godaddy.png" alt="DNS配置" title="DNS配置">
+<p> 点击“ADD”按钮，添加红色方框标注出来的三个选项，其中，A中的值由github提供，可参考<a href="https://help.github.com/articles/setting-up-an-apex-domain/" target="_blank" rel="external">GitHub Help</a>，CNAME的值填入个人的github pages域名(Yourusername.github.io)</p>
+</li>
+<li><p>本地配置</p>
+<p> 进入本地hexo博客的source目录下，执行以下命令：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd source/</div><div class="line">touch CNAME</div><div class="line">vim CNAME #输入在域名服务商那里注册的个人域名</div><div class="line">git add CNAME</div><div class="line">git commit -m &quot;Add CNAME&quot;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>完成以上步骤，正常情况下，应该已经可以使用独立域名访问托管在github上的博客了，如果不能正常访问，可能是DNS配置尚未生效，需等待一段时间再试，如果还有问题，可参考<a href="https://help.github.com/articles/setting-up-an-apex-domain/" target="_blank" rel="external">GitHub Help</a>。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/计算机/">计算机</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Hexo/">Hexo</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+  <!-- 多说评论框 start -->
+  	<div class="ds-thread"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"fengruibo"};
+		(function() {
+				var ds = document.createElement('script');
+				ds.type = 'text/javascript';ds.async = true;
+				ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+				ds.charset = 'UTF-8';
+				(document.getElementsByTagName('head')[0] 
+				 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+  <!-- 多说公共JS代码 end -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:fengruibo.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/计算机/">计算机</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class='widget tag">
+	<h3 class="title">友情链接</h3>
+	<ul class="entry">
+		<li><a href="http://leiyunhe.com/" title="Crane Space^2">leiyunhe</a></li>
+	</ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2017 FengRuibo
+  
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<span id="busuanzi_container_site_uv">
+	本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+</script>
+</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
